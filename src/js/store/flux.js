@@ -1,43 +1,194 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			// apiURL: "https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us47.gitpod.io",
+			apiURL: "https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us54.gitpod.io",
+			species: [],
+			planets: [],
+			planet: [],
+			vehicles: [],
+			store: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			////////////////////MyAPI///////////////////////////////////
+			getPlanets: () => {
+				fetch(getStore().apiURL + "/planets/")
+					.then((res) => res.json())
+					.then((data) => { 
+						setStore({
+							planets: data,
+						});
+					})
+					.then(() => console.log(getStore().planets))
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			getPlanetId: (id) => {
+				// fetch(`https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us54.gitpod.io/planets/${id}`)
+				fetch(`https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us54.gitpod.io/planets/6`)
+					.then((res) => res.json())
+					.then((data) => { 
+						setStore({
+							planet: data,
+						});
+					})
+					.then(() => console.log(getStore().planet))
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			getSpecies: () => {
+				fetch(getStore().apiURL + "/species/")
+					.then((res) => res.json())
+					.then((data) => {
+						setStore({
+							species: data,
+						});
+					})
+					.then(() => console.log(getStore().species));
+			},			
+			getVehicles: () => {
+				fetch(getStore().apiURL + "/vehicles/")
+					.then((res) => res.json())
+					.then((data) => {
+						setStore({
+							vehicles: data,
+						});
+					})
+					.then(() => console.log(getStore().vehicles));	
 			}
+			////////////////////END///////////////////////////////////
+			// ////////////////////GOOD///////////////////////////////////
+			// getSpecies: () => {
+			// 	fetch("https://swapi.dev/api/species/")
+			// 	// fetch(`https://swapi.dev/api/species/${id}`)
+			// 		.then((res) => res.json())
+			// 		.then((data) => {
+			// 			setStore({
+			// 				species: data.results,
+			// 				// speciesid: data.indexOf(results),
+			// 			});
+			// 		})
+			// 		.then(() => console.log(getStore().species));
+			// },			
+			// getPlanets: () => {
+			// 	fetch("https://swapi.dev/api/planets")
+			// 		.then((res) => res.json())
+			// 		.then((data) => { 
+			// 			// console.log(data)
+			// 			setStore({
+			// 				planets: data.results,
+			// 				// store: data.next,
+			// 			});
+			// 		})
+			// 		.then(() => console.log(getStore().planets))
+			// 		// .then(() => console.log(getStore()));
+			// },
+			// getVehicles: () => {
+			// 		fetch("https://swapi.dev/api/vehicles/")
+			// 			.then((res) => res.json())
+			// 			.then((data) => {
+			// 					setStore({
+			// 							vehicles: data.results,
+			// 						});
+			// 					})
+			// 					.then(() => console.log(getStore().vehicles));	
+			// 			}
+			// ////////////////////END///////////////////////////////////
+
+
+			////////////////CLASS VERSION//////////////////////////////////////
+			// getPlanets: () => {
+			// 	fetch("https://www.swapi.dev/api/planets")
+			// 		.then(res => res.json())
+			// 		.then(data => { console.log(data)
+			// 			 setStore({planets:data.results})})
+			// 		.catch(err => console.error(err))
+			// },
+			// getPlanet: (id) => {
+			// 	fetch(`https://www.swapi.dev/api/planets/${id}`)
+			// 		.then(res => res.json())
+			// 		.then(data => { console.log(data)
+			// 			 setStore({planet:data.result})})
+			// 		.catch(err => console.error(err))
+			// },
+			///////////////////////////////////////////////////////////
+
+			// getPlanetId: (id) => {
+			// 	fetch(`https://swapi.dev/api/planets/${id}`)
+			// 		.then((res) => res.json())
+			// 		.then((data) => {
+			// 			setStore({
+			// 				planetId: data.result,
+			// 			});
+			// 		})
+			// 		.then(() => console.log(getStore().planetId));
+			// },
+			// getPlanetId: (id) => {
+			// 	fetch(`https://swapi.dev/api/planets/:id`)
+			// 		.then((res) => res.json())
+			// 		.then((data) => {
+			// 			setStore({
+			// 				planetId: data.result,
+			// 			});
+			// 		})
+			// 		.then(() => console.log(getStore().planetId));
+			// },
+			////////////////////GOOD///////////////////////////////////
+			// getVehicles: () => {
+			// 	fetch("https://swapi.dev/api/vehicles/")
+			// 		.then((res) => res.json())
+			// 		.then((data) => {
+			// 			setStore({
+			// 				vehicles: data.results,
+			// 			});
+			// 		})
+			// 		.then(() => console.log(getStore().vehicles));	
+			// }
+			////////////////TECH VERSION/////////////////////////////////////
+			// getSpecies: () => {
+			// 	fetch("https://www.swapi.tech/api/species/")
+			// 		.then(res => res.json())
+			// 		.then(data => {	console.log(data)
+			// 			 setStore({species: data.results});})
+			// 		.then(() => console.log(getStore().species))
+			// 		.catch(err => console.error(err))
+			// },
+			// 	getSpecie: (id) => {
+			// 		fetch(`https://www.swapi.tech/api/species/${id}`)
+			// 			.then(res => res.json())
+			// 			.then(data => {	console.log(data)
+			// 				setStore({specie:data.result})})
+			// 			.catch(err => console.error(err))
+			// 	},
+			
+			// getPlanets: () => {
+			// 	fetch("https://www.swapi.tech/api/planets/")
+			// 		.then(res => res.json())
+			// 		.then(data => { console.log(data)
+			// 			 setStore({planets: data.results});})
+			// 			 .then(() => console.log(getStore().planets))
+			// 			 .catch(err => console.error(err))
+			// },
+			// 	getPlanet: (id) => {
+			// 		fetch(`https://www.swapi.tech/api/planets/${id}`)
+			// 			.then(res => res.json())
+			// 			.then(data => { console.log(data)
+			// 				setStore({planet:data.result})})
+			// 			.catch(err => console.error(err))
+			// 	},
+
+			// getVehicles: () => {
+			// 	fetch("https://www.swapi.tech/api/vehicles/")
+			// 		.then(res => res.json())
+			// 		.then(data => { console.log(data)
+			// 			 setStore({vehicles: data.results});})
+			// 			 .then(() => console.log(getStore().vehicles))
+			// 			 .catch(err => console.error(err))
+			// },
+			// 	getVehicle: (id) => {
+			// 		fetch(`https://www.swapi.tech/api/vehicles/${id}`)
+			// 			.then(res => res.json())
+			// 			.then(data => { console.log(data)
+			// 				setStore({vehicle:data.result})})
+			// 			.catch(err => console.error(err))
+			// 	},
+			////////////////END TECH VERSION/////////////////////////////////				
 		}
 	};
 };
