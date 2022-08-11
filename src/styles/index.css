@@ -1,3 +1,38 @@
-/* 
-    General Styles
-*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: #000
+    url("https://images.unsplash.com/photo-1528722828814-77b9b83aafb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+    no-repeat center center/cover;
+  height: 100vh;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  width: 200px;
+}
+
+#basic-nav-dropdown {
+  background-color: #ffc107 !important;
+  border-radius: 3px;
+  color: black;
+  opacity: 1;
+  font-weight: 800;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 200, "GRAD" 0, "opsz" 48;
+  color: red !important;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
