@@ -1,9 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      // apiURL: "https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us47.gitpod.io",
-      apiURL:
-        "https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us60.gitpod.io",
+      // apiURL: process.env.BACKEND_URL_MYAPI,
+      // apiURL: process.env.BACKEND_URL_DEVAPI,
+      // apiURL: process.env.BACKEND_URL_TECHAPI,
+      apiURL: process.env.BACKEND_URL_PY4EAPI,
       species: [],
       planets: [],
       planet: [],
@@ -12,36 +13,35 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       ////////////////////MyAPI///////////////////////////////////
+      // getPlanets: () => {
+      //   fetch("https://www.swapi.tech/api/planets/")
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       console.log(data);
+      //       setStore({ planets: data.results });
+      //     })
+      //     .then(() => console.log(getStore().planets))
+      //     .catch((err) => console.error(err));
+      // },
       getPlanets: () => {
         fetch(getStore().apiURL + "/planets/")
           .then((res) => res.json())
           .then((data) => {
             setStore({
-              planets: data,
+              // planets: data, //MYAPI & TECHAPI
+              planets: data.results, //DEVAPI
             });
           })
-          .then(() => console.log(getStore().planets));
-      },
-      getPlanetId: (id) => {
-        // fetch(`https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us60.gitpod.io/planets/${id}`)
-        fetch(
-          `https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us60.gitpod.io/planets/6`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            setStore({
-              planet: data,
-            });
-          })
-          .then(() => console.log(getStore().planet));
+          .then(() => console.log(getStore().planets.results));
       },
       getSpecies: () => {
-        // fetch(getStore().apiURL + "/species/")
-        fetch(getStore().apiURL + "/characters/")
+        fetch(getStore().apiURL + "/species/")
+          // fetch(getStore().apiURL + "/characters/")
           .then((res) => res.json())
           .then((data) => {
             setStore({
-              species: data,
+              // species: data, //MYAPI & TECHAPI
+              species: data.results, //DEVAPI
             });
           })
           .then(() => console.log(getStore().species));
@@ -51,11 +51,25 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((res) => res.json())
           .then((data) => {
             setStore({
-              vehicles: data,
+              // vehicles: data, //MYAPI & TECHAPI
+              vehicles: data.results, //DEVAPI
             });
           })
           .then(() => console.log(getStore().vehicles));
       },
+      // getPlanetId: (id) => {
+      //   // fetch(`https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us60.gitpod.io/planets/${id}`)
+      //   fetch(
+      //     `https://3000-4geeksacade-flaskresthe-w2bctampa5p.ws-us60.gitpod.io/planets/6`
+      //   )
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       setStore({
+      //         planet: data,
+      //       });
+      //     })
+      //     .then(() => console.log(getStore().planet));
+      // },
       ////////////////////END///////////////////////////////////
       // ////////////////////GOOD///////////////////////////////////
       // getSpecies: () => {

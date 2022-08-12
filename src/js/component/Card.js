@@ -4,36 +4,42 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const Cards = (props, data, store) => {
-  // const imgSrc =  'https://starwars-visualguide.com/assets/img/';
-  const storeUrl = props.imgurl;
+  const imgSrc = "https://starwars-visualguide.com/assets/img/";
+  // console.log("This is Props: " + props);
+  console.log(props);
+  console.log(props.uid);
+  const storeUrl = props.url;
   console.log("This is storeUrl: " + storeUrl);
-  // ///////THIS CUTS THE URL AFTER THE .COM ////////////////////////////
-  // const cutUrl = new URL(storeUrl).pathname;
-  // const storeName = cutUrl
-  //   .substring(12, cutUrl.length - 3)
-  //   .replace(/[^a-z]/gi, "");
-  ///////////////////////////////////////////////////////////////////////
+  // ***********THIS CUTS THE URL AFTER THE .COM ******************
+  const cutUrl = new URL(storeUrl).pathname;
+  console.log(cutUrl);
+  const storeName = cutUrl
+    // .substring(12, cutUrl.length - 3)
+    .substring(4, cutUrl.length)
+    .replace(/[^a-z]/gi, "");
+  //**************************************************************
   // const storeName = props.imgurl.substring(5, props.imgurl.length).replace(/[^a-z]/gi, '');
   // const indexId = cutUrl.substring(14, cutUrl.length - 1);
   // const imgPath = cutUrl.substring(5, cutUrl.length - 1);
   // const imgUrl = imgSrc + imgPath + ".jpg";
   // const imgUrl = props.imgurl;
-  // const id = cutUrl.substring(14, cutUrl.length - 1);
+  const id = cutUrl.substring(cutUrl.length - 3, cutUrl.length - 1);
+  const imgUrl = imgSrc + storeName + "/" + id + ".jpg";
   // // //////CONSOLE CHECKS///////////////////////////////////////////////
-  // console.log("This is the id: " + id);
+  console.log("This is the id: " + id);
   // console.log("This is imgurl: " + props.imgurl);
   // console.log("This is cutUrl: " + cutUrl);
-  // console.log("This is storeName: " + storeName);
+  console.log("This is storeName: " + storeName);
   // console.log("This is store: " + store);
   // console.log("This is imgPath: " + imgPath);
-  // console.log("This is imgUrl: " + imgUrl);
+  console.log("This is imgUrl: " + imgUrl);
   // console.log("This is indexId: " + indexId);
   // console.log("This is props url: " + props.url);
   // ///////END//////////////////////////////////////////////////////////
 
   //////////////FINDING ID - THIS WORKED FOR A WHILE////////////////////
-  // const id = (parseInt(props.url))
-  // console.log("This is the id: " + id);
+  // const id = parseInt(props.url);
+  // console.log(id);
   // ///////END//////////////////////////////////////////////////////////
 
   return (
@@ -42,8 +48,9 @@ export const Cards = (props, data, store) => {
         {/* BELOW FIXES TATOOINE BY USING A FALLBACK IMG FOR BROKEN IMGS*/}
         <Card.Img
           variant="top"
-          // src={imgUrl}
-          src={props.imgurl}
+          src={imgUrl}
+          // src="https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg"
+          // src={props.imgurl}
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
             currentTarget.src =
@@ -86,7 +93,8 @@ export const Cards = (props, data, store) => {
               </div>
             }
           </Card.Text>
-          <Link to={`/planets/${props.id}`}>
+          {/* <Link to={`/planets/${props.id}`}> */}
+          <Link to={props.url}>
             <Button
               className="bg-light text-primary"
               // href={imgPath}
@@ -113,7 +121,8 @@ Cards.propTypes = {
   gravity: PropTypes.string,
   terrain: PropTypes.string,
   surface_water: PropTypes.string,
-  population: PropTypes.number,
+  // population: PropTypes.number,
+  population: PropTypes.string,
   url: PropTypes.string,
   imgurl: PropTypes.string,
   // SPECIES:

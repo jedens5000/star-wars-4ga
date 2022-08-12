@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { NavDropdown } from "react-bootstrap";
 import logo from "../../img/Star_Wars_logo.png";
-// import { Home } from "../views/home";
 // import { ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
 // import DropdownButton from 'react-bootstrap/DropdownButton'
 // import ButtonGroup from 'react-bootstrap/ButtonGroup'
