@@ -23,7 +23,9 @@ export const Cards = (props, data, store) => {
   // const imgPath = cutUrl.substring(5, cutUrl.length - 1);
   // const imgUrl = imgSrc + imgPath + ".jpg";
   // const imgUrl = props.imgurl;
-  const id = cutUrl.substring(cutUrl.length - 3, cutUrl.length - 1);
+  const id = cutUrl
+    .substring(cutUrl.length - 3, cutUrl.length - 1)
+    .replace(/\D/g, "");
   const imgUrl = imgSrc + storeName + "/" + id + ".jpg";
   // // //////CONSOLE CHECKS///////////////////////////////////////////////
   console.log("This is the id: " + id);
