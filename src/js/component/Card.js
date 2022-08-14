@@ -5,44 +5,22 @@ import { Link } from "react-router-dom";
 
 export const Cards = (props, data, store) => {
   const imgSrc = "https://starwars-visualguide.com/assets/img/";
-  // console.log("This is Props: " + props);
   console.log(props);
-  console.log(props.uid);
   const storeUrl = props.url;
-  console.log("This is storeUrl: " + storeUrl);
+  console.log("storeUrl: " + storeUrl);
   // ***********THIS CUTS THE URL AFTER THE .COM ******************
   const cutUrl = new URL(storeUrl).pathname;
-  console.log(cutUrl);
-  const storeName = cutUrl
-    // .substring(12, cutUrl.length - 3)
-    .substring(4, cutUrl.length)
-    .replace(/[^a-z]/gi, "");
-  //**************************************************************
-  // const storeName = props.imgurl.substring(5, props.imgurl.length).replace(/[^a-z]/gi, '');
-  // const indexId = cutUrl.substring(14, cutUrl.length - 1);
-  // const imgPath = cutUrl.substring(5, cutUrl.length - 1);
-  // const imgUrl = imgSrc + imgPath + ".jpg";
-  // const imgUrl = props.imgurl;
+  const storeName = cutUrl.substring(4, cutUrl.length).replace(/[^a-z]/gi, "");
+  //*************THIS CREATES THE IMG URL**************************
   const id = cutUrl
     .substring(cutUrl.length - 3, cutUrl.length - 1)
     .replace(/\D/g, "");
   const imgUrl = imgSrc + storeName + "/" + id + ".jpg";
-  // // //////CONSOLE CHECKS///////////////////////////////////////////////
+  // ////////CONSOLE CHECKS//////////////////////////////////////
   console.log("This is the id: " + id);
-  // console.log("This is imgurl: " + props.imgurl);
-  // console.log("This is cutUrl: " + cutUrl);
   console.log("This is storeName: " + storeName);
-  // console.log("This is store: " + store);
-  // console.log("This is imgPath: " + imgPath);
   console.log("This is imgUrl: " + imgUrl);
-  // console.log("This is indexId: " + indexId);
-  // console.log("This is props url: " + props.url);
-  // ///////END//////////////////////////////////////////////////////////
-
-  //////////////FINDING ID - THIS WORKED FOR A WHILE////////////////////
-  // const id = parseInt(props.url);
-  // console.log(id);
-  // ///////END//////////////////////////////////////////////////////////
+  console.log("This is cutUrl: " + cutUrl);
 
   return (
     <>
@@ -51,8 +29,6 @@ export const Cards = (props, data, store) => {
         <Card.Img
           variant="top"
           src={imgUrl}
-          // src="https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg"
-          // src={props.imgurl}
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
             currentTarget.src =
@@ -96,7 +72,9 @@ export const Cards = (props, data, store) => {
             }
           </Card.Text>
           {/* <Link to={`/planets/${props.id}`}> */}
-          <Link to={props.url}>
+          {/* <Link to={props.url}> */}
+          {/* <Link to={storeName + "/" + id}> */}
+          <Link to={"/single/" + storeName + "/" + id}>
             <Button
               className="bg-light text-primary"
               // href={imgPath}

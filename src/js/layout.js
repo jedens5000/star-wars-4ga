@@ -13,6 +13,7 @@ import Planets from "./views/Planets";
 import Species from "./views/Species";
 import Vehicles from "./views/Vehicles";
 import error404 from "../img/404errorStarWars.png";
+import { Single } from "./views/single";
 // import tatooine from "../img/tatooine.jpg";
 
 //create your first component
@@ -31,7 +32,10 @@ const Layout = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/species/:theid">
+            <Route exact path="/single/:id">
+              <Single />
+            </Route>
+            {/* <Route exact path="/species/:theid">
               <Species />
             </Route>
             <Route exact path="/planets/:theid">
@@ -39,7 +43,7 @@ const Layout = () => {
             </Route>
             <Route exact path="/vehicles/:theid">
               <Vehicles />
-            </Route>
+            </Route> */}
             <Route>
               <Link to="/" className="center">
                 <img src={error404} />
