@@ -18,8 +18,7 @@ body {
   width: 200px;
 }
 
-#basic-nav-dropdown,
-.return-home {
+#basic-nav-dropdown {
   background-color: #ffc107 !important;
   border-radius: 3px;
   color: black;

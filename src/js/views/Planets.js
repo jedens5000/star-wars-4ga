@@ -106,7 +106,9 @@ export const Planet = (props) => {
             <span>Orbital Period: {id.orbital_period} days</span>
             <div>
               <Link to={"/"}>
-                <Button className="button-return mt-3">Return Home</Button>
+                <Button className="mt-3 bg-light text-primary">
+                  Return Home
+                </Button>
               </Link>
             </div>
           </Card.Text>
