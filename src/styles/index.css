@@ -37,3 +37,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.break::before {
+  content: "\a";
+  white-space: pre;
+}

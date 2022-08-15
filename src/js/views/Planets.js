@@ -6,24 +6,15 @@ import { useParams, Link } from "react-router-dom";
 // import injectContext from "../store/appContext";
 
 export const Planet = (props) => {
-  console.log(props.name);
+  console.log(props);
   const { store, actions } = useContext(Context);
   console.log(store.planets); // WORKS
-  // console.log(store.planets.id); // WORKS
   const params = useParams();
-
-  // console.log(store.planets[params.theid].population);
-
-  // useEffect(() => {
-  //   actions.getPlanets();
-  //   // actions.getStore().planets;
-  //   // actions.getPlanetId();
-  // }, []);
 
   console.log(store.planets[params.theid - 1].population); // WORKS
   const id = store.planets[params.theid - 1]; // WORKS
-  console.log(id);
-  console.log(id.name);
+  console.log(id); // WORKS
+  console.log(id.name); // WORKS
 
   //START IMG CREATION/////////////////////////////////
   const imgSrc = "https://starwars-visualguide.com/assets/img/";
@@ -46,21 +37,10 @@ export const Planet = (props) => {
   // {Planets && Planets.map((item, index) => {})}
   // const { id } = useParams();
   //   const foundItem = store.planets && store.planets.filter((item) => {item.id === id})
-  //   console.log(foundItem);
-  // console.log(id); //THIS WORKS
-  console.log(store.planets); //THIS WORKS TO BRING IN ARRAY ON 3RD TRY
-  // console.log(store.planets[id]);
-  // console.log(store.planets[id - 1]);
-  // console.log(name); //RETURNS undefined
-  // console.log(planets.name); //BREAKS IT
-  // console.log(store.planets.name); //RETURNS undefined
-  // console.log(store.planets[id].name); //THIS DID WORK, BUT BREAKS NOW
-  // console.log(store.planets[terrain]); //BREAKS IT
-  // const Planet = getPlanets()
-  // console.log(Planet);
+
   return (
     <div>
-      <div className="flex-row d-flex w-100 overflow-scroll">
+      <div className="flex-row d-flex">
         {/* {store.planets.map((planet, i) => {
           return ( */}
         <div>
@@ -95,6 +75,7 @@ export const Planet = (props) => {
           </div>
           <div className="col-md-8">
             <div className="card-body">
+              {/* <Card.Title>{id.name}</Card.Title> */}
               <h5 className="card-title">{id.name}</h5>
               <p className="card-text">
                 Lucas ipsum dolor sit amet organa luuke droid mandalorians
@@ -111,7 +92,6 @@ export const Planet = (props) => {
           </div>
         </div>
         <Card.Body>
-          {/* <Card.Title>{id} {props.name}</Card.Title> */}
           {/* <Card.Title>{id}{name}{climate}</Card.Title> */}
           {/* <Card.Title>{props.planets.id}</Card.Title> */}
           <Card.Text style={{ textAlign: "center" }}>
@@ -120,12 +100,16 @@ export const Planet = (props) => {
               {id.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} |{" "}
             </span>
             <span>Climate: {id.climate} | </span>
-            <span>Terrain: {id.terrain} | </span>
-            <span>Surface Water: {id.surface_water}%</span>
+            <span>Terrain: {id.terrain}</span>
+            <span class="break">Surface Water: {id.surface_water}% | </span>
+            <span>Rotation Period: {id.rotation_period} hrs | </span>
+            <span>Orbital Period: {id.orbital_period} days</span>
+            <div>
+              <Link to={"/"}>
+                <Button className="button-return mt-3">Return Home</Button>
+              </Link>
+            </div>
           </Card.Text>
-          <Link to={"/"}>
-            <Button className="button-return">Return Home</Button>
-          </Link>
         </Card.Body>
       </div>
     </div>
