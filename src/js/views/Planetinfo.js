@@ -53,7 +53,7 @@ export const Cards = (props, data, store) => {
                 <p>{props.terrain ? `Terrain: ${props.terrain}` : ""}</p>
                 <p>
                   {props.surface_water
-                    ? `Surface Water: ${props.surface_water}%`
+                    ? `Surface Water: ${props.surface_water}`
                     : ""}
                 </p>
                 <p>
