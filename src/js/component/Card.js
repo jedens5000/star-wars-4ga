@@ -50,23 +50,26 @@ export const Cards = (props, data, store) => {
   return (
     <>
       <Card className="bg-dark" style={{ width: "30rem" }}>
-        {/* BELOW FIXES TATOOINE BY USING A FALLBACK IMG FOR BROKEN IMGS*/}
+        {/* BELOW FIXES TATOOINE BY USING A FALLBACK IMG FOR BROKEN IMGS & CHANGES "People" to CHARACTERS in the URL*/}
         <Card.Img
           variant="top"
-          src={imgUrl}
+          src={
+            imgUrl ===
+            "https://starwars-visualguide.com/assets/img/planets/1.jpg"
+              ? "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg"
+              : imgUrl
+          }
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
             currentTarget.src = imgSrc + "characters/" + id + ".jpg";
-            // "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg";
           }}
         />
+
         <Card.Body>
           <Card.Title>Name: {props.name}</Card.Title>
           <Card.Text>
             {
               <div>
-                {/* {console.log(data.next)} */}
-                {/* <p>{props.url}</p> */}
                 <p>
                   {props.population
                     ? `Population: ${props.population
