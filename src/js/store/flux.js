@@ -7,7 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       apiURL: process.env.BACKEND_URL_PY4EAPI,
       species: [],
       planets: [],
-      // planet: [],
+      people: [],
+      characters: [],
       vehicles: [],
       favorites: [],
       store: [],
@@ -57,6 +58,17 @@ const getState = ({ getStore, getActions, setStore }) => {
             });
           })
           .then(() => console.log(getStore().vehicles));
+      },
+      getPeople: () => {
+        fetch(getStore().apiURL + "/people/")
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({
+              // characters: data.results, //MYAPI & TECHAPI
+              people: data.results, //DEVAPI & PY4EAPI
+            });
+          })
+          .then(() => console.log(getStore().people));
       },
     },
   };

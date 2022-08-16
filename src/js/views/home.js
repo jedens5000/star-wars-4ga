@@ -13,7 +13,6 @@ export const Home = () => {
         {store.planets.map((planet, i) => {
           return (
             <div>
-              {/* <Cards key={planet.id} name={planet.name} population={planet.population} climate={planet.climate} url={planet.url.replace(/\D/g,'')} /> */}
               <Cards
                 key={planet.uid}
                 name={planet.name}
@@ -37,6 +36,21 @@ export const Home = () => {
                 classification={specie.classification}
                 language={specie.language}
                 url={specie.url}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex-row d-flex w-100 overflow-scroll">
+        {store.people.map((person, i) => {
+          return (
+            <div>
+              <Cards
+                key={person.id}
+                name={person.name}
+                gender={person.gender}
+                birth_year={person.birth_year}
+                url={person.url}
               />
             </div>
           );

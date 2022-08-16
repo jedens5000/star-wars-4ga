@@ -4,16 +4,15 @@ import { Context } from "../store/appContext"; //API access
 import PropTypes from "prop-types";
 import { useParams, Link } from "react-router-dom";
 
-export const Vehicle = (props) => {
+export const Person = (props) => {
   console.log(props);
   const { store, actions } = useContext(Context);
-  console.log(store.vehicles); // WORKS
+  console.log(store.people); // WORKS
   const params = useParams();
 
-  // console.log(store.vehicles[params.theid - 1].population); // WORKS
-  const id = store.vehicles[params.theid - 1]; // WORKS
+  const id = store.people[params.theid - 1]; // WORKS
   console.log(id); // WORKS
-  // console.log(id.name); // WORKS
+  console.log(id.name); // WORKS
 
   //START IMG CREATION/////////////////////////////////
   const imgSrc = "https://starwars-visualguide.com/assets/img/";
@@ -26,7 +25,7 @@ export const Vehicle = (props) => {
   const imgId = cutUrl
     .substring(cutUrl.length - 3, cutUrl.length - 1)
     .replace(/\D/g, "");
-  const imgUrl = imgSrc + storeName + "/" + imgId + ".jpg";
+  const imgUrl = imgSrc + "characters/" + imgId + ".jpg";
   console.log(imgUrl);
   //END IMG CREATION/////////////////////////////////
 
@@ -64,13 +63,12 @@ export const Vehicle = (props) => {
         </div>
         <Card.Body>
           <Card.Text style={{ textAlign: "center" }}>
-            <span>Model: {id.model} | </span>
-            <span>Manufacturer: {id.manufacturer} | </span>
-            <span>Cost: {id.cost_in_credits} credits</span>
-            <span class="break">Length: {id.length} | </span>
-            <span>Max. Speed: {id.max_atmosphering_speed} | </span>
-            <span>Crew: {id.crew} | </span>
-            <span>Passengers: {id.passengers}</span>
+            <span>Gender: {id.gender} | </span>
+            <span>Birth Year: {id.birth_year} | </span>
+            <span>Height: {id.height} cm</span>
+            <span class="break">Mas: {id.mass} | </span>
+            <span>Hair Color: {id.hair_color} | </span>
+            <span>Eye Color: {id.eye_color}</span>
             <div>
               <Link to={"/"}>
                 <Button className="mt-3 bg-light text-primary">
@@ -85,22 +83,16 @@ export const Vehicle = (props) => {
   );
 };
 
-Vehicle.propTypes = {
+Person.propTypes = {
   id: PropTypes.integer,
-  model: PropTypes.string,
-  manufacturer: PropTypes.string,
-  cost_in_credits: PropTypes.string,
-  length: PropTypes.string,
-  max_atmosphering_speed: PropTypes.string,
-  crew: PropTypes.string,
-  passengers: PropTypes.string,
-  cargo_capacity: PropTypes.string,
-  consumables: PropTypes.string,
-  vehicle_class: PropTypes.string,
-  // STARSHIPS (+ same as vehicle props above):
-  hyperdrive_rating: PropTypes.string,
-  MGLT: PropTypes.string,
-  starship_class: PropTypes.string,
+  name: PropTypes.string,
+  height: PropTypes.string,
+  mass: PropTypes.string,
+  hair_color: PropTypes.string,
+  skin_color: PropTypes.string,
+  eye_color: PropTypes.string,
+  birth_year: PropTypes.string,
+  gender: PropTypes.string,
 };
 
-export default Vehicle;
+export default Person;

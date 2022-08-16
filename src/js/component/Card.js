@@ -5,17 +5,42 @@ import { Link } from "react-router-dom";
 
 export const Cards = (props, data, store) => {
   const imgSrc = "https://starwars-visualguide.com/assets/img/";
-  console.log(props);
+  // console.log(props);
   const storeUrl = props.url;
   console.log("storeUrl: " + storeUrl);
   // ***********THIS CUTS THE URL AFTER THE .COM ******************
   const cutUrl = new URL(storeUrl).pathname;
-  const storeName = cutUrl.substring(4, cutUrl.length).replace(/[^a-z]/gi, "");
+  let storeName = cutUrl.substring(4, cutUrl.length).replace(/[^a-z]/gi, "");
+  // if (storeName === "people") {
+  //   return (storeName = "characters");
+  // }
+  // console.log(storeName);
+
+  // if (storeName === "people") {
+  //   return "characters";
+  // }
+
+  storeName === "people" ? storeName === "characters" : storeName === storeName;
+
+  console.log(storeName);
   //*************THIS CREATES THE IMG URL**************************
   const id = cutUrl
     .substring(cutUrl.length - 3, cutUrl.length - 1)
     .replace(/\D/g, "");
   const imgUrl = imgSrc + storeName + "/" + id + ".jpg";
+  // const peopleImgUrl = imgSrc + "characters/" + id + ".jpg";
+
+  // const imgUrl = "";
+  // if (storeName !== "people") {
+  //   imgUrl = imgSrc + storeName + "/" + id + ".jpg";
+  // } else {
+  //   return (imgUrl = imgSrc + "characters/" + id + ".jpg");
+  // }
+  // console.log(imgUrl);
+  //   ? (imgUrl = imgSrc + "characters/" + id + ".jpg")
+  //   : (imgUrl = imgSrc + storeName + "/" + id + ".jpg");
+  // if (storeName === "people") {}
+
   // ////////CONSOLE CHECKS//////////////////////////////////////
   console.log("This is the id: " + id);
   console.log("This is storeName: " + storeName);
@@ -31,8 +56,8 @@ export const Cards = (props, data, store) => {
           src={imgUrl}
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
-            currentTarget.src =
-              "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg";
+            currentTarget.src = imgSrc + "characters/" + id + ".jpg";
+            // "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg";
           }}
         />
         <Card.Body>
@@ -62,6 +87,10 @@ export const Cards = (props, data, store) => {
                     : ""}
                 </p>
                 <p>{props.language ? `Language: ${props.language}` : ""}</p>
+                <p>{props.gender ? `Gender: ${props.gender}` : ""}</p>
+                <p>
+                  {props.birth_year ? `Birth Year: ${props.birth_year}` : ""}
+                </p>
                 <p>
                   {props.vehicle_class ? `Class: ${props.vehicle_class}` : ""}
                 </p>
@@ -115,6 +144,16 @@ Cards.propTypes = {
   average_lifespan: PropTypes.string,
   homeworld: PropTypes.string,
   language: PropTypes.string,
+  // PEOPLE:
+  id: PropTypes.integer,
+  name: PropTypes.string,
+  height: PropTypes.string,
+  mass: PropTypes.string,
+  hair_color: PropTypes.string,
+  skin_color: PropTypes.string,
+  eye_color: PropTypes.string,
+  birth_year: PropTypes.string,
+  gender: PropTypes.string,
   // VEHICLES:
   model: PropTypes.string,
   manufacturer: PropTypes.string,
