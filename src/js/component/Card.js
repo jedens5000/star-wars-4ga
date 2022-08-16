@@ -11,35 +11,12 @@ export const Cards = (props, data, store) => {
   // ***********THIS CUTS THE URL AFTER THE .COM ******************
   const cutUrl = new URL(storeUrl).pathname;
   let storeName = cutUrl.substring(4, cutUrl.length).replace(/[^a-z]/gi, "");
-  // if (storeName === "people") {
-  //   return (storeName = "characters");
-  // }
-  // console.log(storeName);
 
-  // if (storeName === "people") {
-  //   return "characters";
-  // }
-
-  storeName === "people" ? storeName === "characters" : storeName === storeName;
-
-  console.log(storeName);
   //*************THIS CREATES THE IMG URL**************************
   const id = cutUrl
     .substring(cutUrl.length - 3, cutUrl.length - 1)
     .replace(/\D/g, "");
   const imgUrl = imgSrc + storeName + "/" + id + ".jpg";
-  // const peopleImgUrl = imgSrc + "characters/" + id + ".jpg";
-
-  // const imgUrl = "";
-  // if (storeName !== "people") {
-  //   imgUrl = imgSrc + storeName + "/" + id + ".jpg";
-  // } else {
-  //   return (imgUrl = imgSrc + "characters/" + id + ".jpg");
-  // }
-  // console.log(imgUrl);
-  //   ? (imgUrl = imgSrc + "characters/" + id + ".jpg")
-  //   : (imgUrl = imgSrc + storeName + "/" + id + ".jpg");
-  // if (storeName === "people") {}
 
   // ////////CONSOLE CHECKS//////////////////////////////////////
   console.log("This is the id: " + id);
@@ -103,17 +80,8 @@ export const Cards = (props, data, store) => {
               </div>
             }
           </Card.Text>
-          {/* <Link to={`/planets/${props.id}`}> */}
-          {/* <Link to={props.url}> */}
-          {/* <Link to={storeName + "/" + id}> */}
           <Link to={"/" + storeName + "/" + id}>
-            <Button
-              className="bg-light text-primary"
-              // href={imgPath}
-              // href={storeName + '/' + props.id}
-
-              variant="primary"
-            >
+            <Button className="bg-light text-primary" variant="primary">
               Learn more!
             </Button>
           </Link>

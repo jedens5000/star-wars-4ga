@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { Card, Button, Col } from "react-bootstrap";
 import { Context } from "../store/appContext"; //API access
-// import Card from "react-bootstrap/Card";
 import { Cards } from "../component/Card";
 
 export const Home = () => {
@@ -56,7 +54,7 @@ export const Home = () => {
           );
         })}
       </div>
-      <div className="flex-row d-flex w-100 overflow-scroll">
+      {/* <div className="flex-row d-flex w-100 overflow-scroll">
         {store.vehicles.map((vehicle, i) => {
           return (
             <div>
@@ -71,7 +69,7 @@ export const Home = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

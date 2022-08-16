@@ -3,7 +3,7 @@ import { Card, Spinner, Button, Col } from "react-bootstrap";
 import { Context } from "../store/appContext"; //API access
 import PropTypes from "prop-types";
 import { useParams, Link } from "react-router-dom";
-// import injectContext from "../store/appContext";
+import error404 from "../../img/404errorStarWars.png";
 
 export const Specie = (props) => {
   console.log(props);
@@ -41,8 +41,7 @@ export const Specie = (props) => {
               src={imgUrl}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
-                currentTarget.src =
-                  "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg";
+                currentTarget.src = { error404 };
               }}
             />
           </div>

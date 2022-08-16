@@ -3,9 +3,10 @@ import { Card, Spinner, Button, Col } from "react-bootstrap";
 import { Context } from "../store/appContext"; //API access
 import PropTypes from "prop-types";
 import { useParams, Link } from "react-router-dom";
+import error404 from "../../img/404errorStarWars.png";
 
 export const Person = (props) => {
-  console.log(props);
+  // console.log(props);
   const { store, actions } = useContext(Context);
   console.log(store.people); // WORKS
   const params = useParams();
@@ -39,8 +40,7 @@ export const Person = (props) => {
               src={imgUrl}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
-                currentTarget.src =
-                  "https://upload.wikimedia.org/wikipedia/en/6/6d/Tatooine_(fictional_desert_planet).jpg";
+                currentTarget.src = { error404 };
               }}
             />
           </div>
@@ -66,7 +66,7 @@ export const Person = (props) => {
             <span>Gender: {id.gender} | </span>
             <span>Birth Year: {id.birth_year} | </span>
             <span>Height: {id.height} cm</span>
-            <span class="break">Mas: {id.mass} | </span>
+            <span class="break">Wgt: {id.mass} kg | </span>
             <span>Hair Color: {id.hair_color} | </span>
             <span>Eye Color: {id.eye_color}</span>
             <div>

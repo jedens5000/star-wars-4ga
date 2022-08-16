@@ -1,21 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./views/home";
-// import { Demo } from "./views/demo";
-// import { Single } from "./views/single";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
-// import { Footer } from "./component/footer";
 import Planets from "./views/Planets";
 import Species from "./views/Species";
 import People from "./views/People";
 import Vehicles from "./views/Vehicles";
 import error404 from "../img/404errorStarWars.png";
-// import { Single } from "./views/single";
-// import tatooine from "../img/tatooine.jpg";
 
 //create your first component
 const Layout = () => {
@@ -33,9 +26,6 @@ const Layout = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            {/* <Route exact path="/single/:id">
-              <Single />
-            </Route> */}
             <Route exact path="/planets/:theid">
               <Planets />
             </Route>
@@ -54,7 +44,6 @@ const Layout = () => {
               </Link>
             </Route>
           </Switch>
-          {/* <Footer /> */}
         </ScrollToTop>
       </BrowserRouter>
     </div>
