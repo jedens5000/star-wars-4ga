@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -41,6 +43,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .then(() => console.log(getStore().people));
       },
+      // ///////////FAVORITES//////////
+      getFavorites: (item) => {
+        console.log(item);
+        let myFavorites = getStore().favorites;
+        let selected = myFavorites.find((element) => element === item);
+        if (selected) {
+          myFavorites = myFavorites.filter((element) => item !== element);
+          setStore({ favorites: myFavorites });
+        } else {
+          myFavorites = [...myFavorites, item];
+          setStore({ favorites: myFavorites });
+        }
+      },
+
       // getVehicles: () => {
       //   fetch(getStore().apiURL + "/vehicles/")
       //     .then((res) => res.json())

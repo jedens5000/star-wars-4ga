@@ -1,35 +1,66 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { NavDropdown } from "react-bootstrap";
+import { NavDropdown, Dropdown, Button, Placeholder } from "react-bootstrap";
+import { Context } from "../store/appContext";
 import logo from "../../img/Star_Wars_logo.png";
-// import { ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
-// import DropdownButton from 'react-bootstrap/DropdownButton'
-// import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import { Icon } from "@iconify/react";
 
 export const Navbar = () => {
-  // const heart = (`className="fa fa-heart text-danger"`);
+  const { store, actions } = useContext(Context);
+  const heart = <Icon icon="bi:heart-fill" className="text-danger" />;
+  const dropDownTitle = <span>{heart} Favorites</span>;
   return (
     <nav className="navbar navbar-light bg-opacity-0 m-3">
       <Link to="/">
-        <img
-          className="logo"
-          // src="https://logos-download.com/wp-content/uploads/2016/09/Star_Wars_logo-1.png"
-          src={logo}
-        />
+        <img className="logo" src={logo} />
       </Link>
-      {/* <NavDropdown className="fa fa-heart text-danger" title="♥ Favorites" id="basic-nav-dropdown">				 */}
-      {/* <NavDropdown className="material-symbols-outlined"  title="favorite FAVORITES" id="basic-nav-dropdown"> */}
-      <NavDropdown title="Favorites" id="basic-nav-dropdown">
-        {/* <i className="fa fa-heart text-danger" /> */}
-        <NavDropdown.Item href="#action/3.1">Favorite1</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Favorite2</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Favorite3</NavDropdown.Item>
+      <NavDropdown title={dropDownTitle} id="basic-nav-dropdown">
+        {store.favorites.length > 0 ? (
+          store.favorites.map((selected, i) => (
+            //     <Dropdown.Item
+            //       className="d-flex justify-content-end"
+            //       href="#/action-1"
+            //       key={i}
+            //     >
+            //       {selected}
+            //       <Placeholder xs={1} variant="light" />
+            //       <Button
+            //         className="float-right"
+            //         variant="danger"
+            //         onClick={() => actions.getFavorites(selected, i)}
+            //       >
+            //         <i className="fas fa-trash-alt" />
+            //       </Button>
+            //     </Dropdown.Item>
+            //   ))
+            // ) : (
+            //   <DropdownItem>There are no favorites</DropdownItem>
+            // )}
+            <NavDropdown.Item href="#/action-1" key={i}>
+              {heart} {selected}
+              {/* <Placeholder xs={1} variant="light" /> */}
+              <Button
+                className="float-right"
+                variant="danger"
+                onClick={() => actions.getFavorites(selected, i)}
+              >
+                <Icon icon="clarity:window-close-line" />
+              </Button>
+            </NavDropdown.Item>
+          ))
+        ) : (
+          <NavDropdown.Item>Favorites You No Have</NavDropdown.Item>
+        )}
+        {/* <NavDropdown.Item href="#action/3.1">
+          {heart} Favorite1 <Icon icon="clarity:window-close-line" />
+        </NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">
+          {heart} Favorite2 <Icon icon="clarity:window-close-line" />
+        </NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">
+          {heart} Favorite3 <Icon icon="clarity:window-close-line" />
+        </NavDropdown.Item> */}
       </NavDropdown>
-      {/* <div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Favorites</button>
-				</Link>
-			</div> */}
     </nav>
   );
 };

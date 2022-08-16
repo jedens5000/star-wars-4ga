@@ -1,9 +1,12 @@
-import React, { Component, getState } from "react";
+import React, { Component, getState, useContext } from "react";
 import { Card, Button, Img } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import { Context } from "../store/appContext";
 
-export const Cards = (props, data, store) => {
+export const Cards = (props) => {
+  const { store, actions } = useContext(Context);
   const imgSrc = "https://starwars-visualguide.com/assets/img/";
   // console.log(props);
   const storeUrl = props.url;
@@ -80,11 +83,30 @@ export const Cards = (props, data, store) => {
               </div>
             }
           </Card.Text>
-          <Link to={"/" + storeName + "/" + id}>
-            <Button className="bg-light text-primary" variant="primary">
-              Learn more!
+          <div className="d-flex justify-content-between">
+            <Link to={"/" + storeName + "/" + id}>
+              <Button className="bg-light text-primary" variant="primary">
+                Learn more!
+              </Button>
+            </Link>
+            {/* ADD TO FAVORITES */}
+            <Button
+              className="bg-light text-primary"
+              variant="primary"
+              onClick={() => actions.getFavorites(props.name)}
+            >
+              <Icon icon="bi:heart" className="text-danger" /> Add to Favorites
             </Button>
-          </Link>
+            {/* REMOVE FOR FAVORITES */}
+            {/* <Button
+              className="bg-light text-primary"
+              variant="primary"
+              onClick={() => actions.getFavorites(props.name)}
+            >
+              <Icon icon="bi:heart-fill" className="text-danger" /> Remove
+              Favorite
+            </Button> */}
+          </div>
         </Card.Body>
       </Card>
     </>
