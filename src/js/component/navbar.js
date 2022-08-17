@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { NavDropdown, Dropdown, Button, Placeholder } from "react-bootstrap";
+import { NavDropdown, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import logo from "../../img/Star_Wars_logo.png";
 import { Icon } from "@iconify/react";
@@ -9,6 +9,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const heart = <Icon icon="bi:heart-fill" className="text-danger" />;
   const dropDownTitle = <span>{heart} Favorites</span>;
+  console.log(store.favorites.id);
   return (
     <nav className="navbar navbar-light bg-opacity-0 m-3">
       <Link to="/">
@@ -17,31 +18,17 @@ export const Navbar = () => {
       <NavDropdown title={dropDownTitle} id="basic-nav-dropdown">
         {store.favorites.length > 0 ? (
           store.favorites.map((selected, i) => (
-            //     <Dropdown.Item
-            //       className="d-flex justify-content-end"
-            //       href="#/action-1"
-            //       key={i}
-            //     >
-            //       {selected}
-            //       <Placeholder xs={1} variant="light" />
-            //       <Button
-            //         className="float-right"
-            //         variant="danger"
-            //         onClick={() => actions.getFavorites(selected, i)}
-            //       >
-            //         <i className="fas fa-trash-alt" />
-            //       </Button>
-            //     </Dropdown.Item>
-            //   ))
-            // ) : (
-            //   <DropdownItem>There are no favorites</DropdownItem>
-            // )}
-            <NavDropdown.Item href="#/action-1" key={i}>
-              {heart} {selected}
-              {/* <Placeholder xs={1} variant="light" /> */}
+            <NavDropdown.Item key={i}>
+              {/* NEED TO ADD LINK TO GO TO SINGLE PAGE FROM FAVORITES */}
+              {/* <Link to={store.favorites[selected]}> */}
+              {/* <Link to={store.storeName}> */}
+              {/* <Button variant="border border-0"> */}
+              {heart} &nbsp; {selected}
+              {/* </Button> */}
+              {/* </Link> */}
               <Button
                 className="float-right"
-                variant="danger"
+                variant="border border-0"
                 onClick={() => actions.getFavorites(selected, i)}
               >
                 <Icon icon="clarity:window-close-line" />
@@ -49,17 +36,8 @@ export const Navbar = () => {
             </NavDropdown.Item>
           ))
         ) : (
-          <NavDropdown.Item>Favorites You No Have</NavDropdown.Item>
+          <NavDropdown.Item>You No Have Favorites</NavDropdown.Item>
         )}
-        {/* <NavDropdown.Item href="#action/3.1">
-          {heart} Favorite1 <Icon icon="clarity:window-close-line" />
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">
-          {heart} Favorite2 <Icon icon="clarity:window-close-line" />
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">
-          {heart} Favorite3 <Icon icon="clarity:window-close-line" />
-        </NavDropdown.Item> */}
       </NavDropdown>
     </nav>
   );

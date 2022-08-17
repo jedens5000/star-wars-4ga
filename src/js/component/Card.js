@@ -1,5 +1,5 @@
-import React, { Component, getState, useContext } from "react";
-import { Card, Button, Img } from "react-bootstrap";
+import React, { Component, useState, useContext } from "react";
+import { Card, Button, Img, ToggleButton } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
@@ -10,7 +10,7 @@ export const Cards = (props) => {
   const imgSrc = "https://starwars-visualguide.com/assets/img/";
   // console.log(props);
   const storeUrl = props.url;
-  console.log("storeUrl: " + storeUrl);
+  // console.log("storeUrl: " + storeUrl);
   // ***********THIS CUTS THE URL AFTER THE .COM ******************
   const cutUrl = new URL(storeUrl).pathname;
   let storeName = cutUrl.substring(4, cutUrl.length).replace(/[^a-z]/gi, "");
@@ -22,10 +22,18 @@ export const Cards = (props) => {
   const imgUrl = imgSrc + storeName + "/" + id + ".jpg";
 
   // ////////CONSOLE CHECKS//////////////////////////////////////
-  console.log("This is the id: " + id);
-  console.log("This is storeName: " + storeName);
-  console.log("This is imgUrl: " + imgUrl);
-  console.log("This is cutUrl: " + cutUrl);
+  // console.log("This is the id: " + id);
+  // console.log("This is storeName: " + storeName);
+  // console.log("This is imgUrl: " + imgUrl);
+  // console.log("This is cutUrl: " + cutUrl);
+
+  // This changes the Favorite button/////////////////////////////
+  // Needs to be updated to toggle when X icon is clicked in Favorites dropdown///////
+  const [buttonToggled, setButtonToggled] = useState(false);
+  const ToggleButton = () => {
+    buttonToggled ? setButtonToggled(false) : setButtonToggled(true);
+    console.log(buttonToggled);
+  };
 
   return (
     <>
@@ -89,23 +97,19 @@ export const Cards = (props) => {
                 Learn more!
               </Button>
             </Link>
-            {/* ADD TO FAVORITES */}
+            {/* ADD & REMOVE FAVORITES */}
             <Button
               className="bg-light text-primary"
               variant="primary"
-              onClick={() => actions.getFavorites(props.name)}
+              onClick={() => actions.getFavorites(props.name) + ToggleButton()}
             >
-              <Icon icon="bi:heart" className="text-danger" /> Add to Favorites
-            </Button>
-            {/* REMOVE FOR FAVORITES */}
-            {/* <Button
-              className="bg-light text-primary"
-              variant="primary"
-              onClick={() => actions.getFavorites(props.name)}
-            >
-              <Icon icon="bi:heart-fill" className="text-danger" /> Remove
+              {buttonToggled ? (
+                <Icon icon="bi:heart-fill" className="text-danger me-2" />
+              ) : (
+                <Icon icon="bi:heart" className="text-danger me-2" />
+              )}
               Favorite
-            </Button> */}
+            </Button>
           </div>
         </Card.Body>
       </Card>

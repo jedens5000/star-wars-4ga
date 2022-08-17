@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       // apiURL: process.env.BACKEND_URL_DEVAPI,
-      apiURL: process.env.BACKEND_URL_PY4EAPI,
+      apiURL: process.env.BACKEND_URL_PY4EAPI, // Faster than DEVAPI
       species: [],
       planets: [],
       people: [],
@@ -12,7 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       favorites: [],
     },
     actions: {
-      ////////////////////API Fetch///////////////////////////////////
+      ////////////////////API Fetch///////////////////////////////
       getPlanets: () => {
         fetch(getStore().apiURL + "/planets/")
           .then((res) => res.json())
