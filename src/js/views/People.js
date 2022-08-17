@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, Component, Suspense } from "react";
-import { Card, Spinner, Button, Col } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Card, Button } from "react-bootstrap";
 import { Context } from "../store/appContext"; //API access
 import PropTypes from "prop-types";
 import { useParams, Link } from "react-router-dom";

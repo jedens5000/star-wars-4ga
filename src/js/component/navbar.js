@@ -9,7 +9,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   const heart = <Icon icon="bi:heart-fill" className="text-danger" />;
   const dropDownTitle = <span>{heart} Favorites</span>;
-  console.log(store.favorites.id);
+  console.log(store.favorites);
   return (
     <nav className="navbar navbar-light bg-opacity-0 m-3">
       <Link to="/">

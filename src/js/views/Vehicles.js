@@ -10,7 +10,6 @@ export const Vehicle = (props) => {
   console.log(store.vehicles); // WORKS
   const params = useParams();
 
-  // console.log(store.vehicles[params.theid - 1].population); // WORKS
   const id = store.vehicles[params.theid - 1]; // WORKS
   console.log(id); // WORKS
   // console.log(id.name); // WORKS

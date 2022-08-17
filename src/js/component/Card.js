@@ -1,5 +1,5 @@
-import React, { Component, useState, useContext } from "react";
-import { Card, Button, Img, ToggleButton } from "react-bootstrap";
+import React, { useState, useContext } from "react";
+import { Card, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";

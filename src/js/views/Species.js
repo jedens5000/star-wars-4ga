@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, Component, Suspense } from "react";
-import { Card, Spinner, Button, Col } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Card, Button } from "react-bootstrap";
 import { Context } from "../store/appContext"; //API access
 import PropTypes from "prop-types";
 import { useParams, Link } from "react-router-dom";
@@ -11,7 +11,6 @@ export const Specie = (props) => {
   console.log(store.species); // WORKS
   const params = useParams();
 
-  console.log(store.species[params.theid - 1].population); // WORKS
   const id = store.species[params.theid - 1]; // WORKS
   console.log(id); // WORKS
   console.log(id.name); // WORKS
