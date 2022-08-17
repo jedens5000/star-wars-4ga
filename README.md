@@ -14,7 +14,8 @@ There is also a "Favorites" feature that allows you to select the favorites that
 
 <p align="center">
 You can view the live version of this project at:<br />
-[![www.jonedens.com/projects/star-wars-4ga/](https://www.jonedens.com/projects/star-wars-4ga/)]
+<!-- [![www.jonedens.com/projects/star-wars-4ga/](https://www.jonedens.com/projects/star-wars-4ga/)] -->
+	<a href="https://www.jonedens.com/projects/star-wars-4ga/">www.jonedens.com/projects/star-wars-4ga</a>
 </p>
 <br />
 
