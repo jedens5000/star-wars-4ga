@@ -26,13 +26,14 @@ export const Navbar = () => {
               {heart} &nbsp; {selected}
               {/* </Button> */}
               {/* </Link> */}
+              {/* //////THIS REMOVES THE ITEM FROM THE FAVORITES LIST///////////////
               <Button
                 className="float-right"
                 variant="border border-0"
                 onClick={() => actions.getFavorites(selected, i)}
               >
                 <Icon icon="clarity:window-close-line" />
-              </Button>
+              </Button> */}
             </NavDropdown.Item>
           ))
         ) : (
