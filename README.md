@@ -13,10 +13,13 @@ This was a School project built using React Flux and the SWAPI API. The API does
 There is also a "Favorites" feature that allows you to select the favorites that you want to keep. Just click the "🤍 Favorite" button on each item to add that item to your list, and then click it again to remove it. You can view a list of your favorites by clicking the "Favorites" dropdown in the upper right corner of the site.
 
 <p align="center">
-**You can view the live version of this project at:**
-[www.jonedens.com/projects/star-wars-4ga/](https://www.jonedens.com/projects/star-wars-4ga/)
+You can view the live version of this project at:<br />
+[![www.jonedens.com/projects/star-wars-4ga/](https://www.jonedens.com/projects/star-wars-4ga/)]
+</p>
 <br />
-<a href="https://www.jonedens.com/projects/star-wars-4ga/"><img src="https://www.jonedens.com/images/starwars-preview-sm.png/" /></a>
+
+<p align="center">
+<a href="https://www.jonedens.com/projects/star-wars-4ga/"><img src="https://www.jonedens.com/images/starwars-preview.png" /></a>
 </p>
 
 <!-- ### Requirements:
