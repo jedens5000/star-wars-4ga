@@ -8,7 +8,7 @@
 
 ## Star Wars SWAPI API Project using React.
 
-This was a School project built using React Flux and the SWAPI API. The API doesn't include images so I had to bring them in from a completely different source and then match them up with the SWAPI API category and id of each one. 
+This was a School project built using React Router and Flux using the SWAPI API. The API doesn't include images so I had to bring them in from a completely different source and then match them up with the SWAPI API category and id of each one. 
 
 There is also a "Favorites" feature that allows you to select the favorites that you want to keep. Just click the "<strong>🤍 Favorite</strong>" button on each item to add that item to your list, then click it again to remove it. You can view a list of your favorites by clicking the "Favorites" dropdown in the upper right corner of the site.
 
@@ -16,7 +16,6 @@ Very little CSS styling was used in the style sheet of this project as Bootstrap
 
 <p align="center">
 You can view the live version of this project at:<br />
-<!-- [![www.jonedens.com/projects/star-wars-4ga/](https://www.jonedens.com/projects/star-wars-4ga/)] -->
 	<a href="https://www.jonedens.com/projects/star-wars-4ga/">www.jonedens.com/projects/star-wars-4ga</a>
 </p>
 <br />
