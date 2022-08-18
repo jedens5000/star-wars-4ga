@@ -16,12 +16,12 @@ Very little CSS styling was used in the style sheet of this project as Bootstrap
 
 <p align="center">
 I hope to have this project deployed soon, but in the meantime, you can view my other live projects at:<br />
-	<a href="https://www.jonedens.com">www.jonedens.com</a>
+	<a href="https://www.jonedens.com" target="_blank">www.jonedens.com</a>
 </p>
 <br />
 
 <p align="center">
-<a href="https://www.jonedens.com"><img src="https://www.jonedens.com/images/starwars-preview.png" /></a>
+<a href="https://www.jonedens.com" target="_blank"><img src="https://www.jonedens.com/images/starwars-preview.png" /></a>
 </p>
 
 <!-- ### Requirements:
