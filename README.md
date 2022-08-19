@@ -19,7 +19,7 @@ This project has been deployed with Vercel, so you can view it live at:<br />
 	<a href="https://star-wars-4ga.vercel.app" target="_blank">https://star-wars-4ga.vercel.app</a>
 </p>
 <p align="center">
-You can see all of my deployed projects live at:<br />
+You can view all of my deployed projects at:<br />
 	<a href="https://www.jonedens.com" target="_blank">www.jonedens.com</a>
 </p>
 <br />
