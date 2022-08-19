@@ -15,13 +15,13 @@ There is also a "Favorites" feature that allows you to select the favorites that
 Very little CSS styling was used in the style sheet of this project as Bootstrap was used instead. A future update will include links to go directly to the details of each favorite item from the Favorites menu.
 
 <p align="center">
-You can view the live version of this project at:<br />
-	<a href="https://www.jonedens.com/projects/star-wars-4ga/">www.jonedens.com/projects/star-wars-4ga</a>
+I hope to have this project deployed soon, but in the meantime, you can view my other live projects at:<br />
+	<a href="https://www.jonedens.com" target="_blank">www.jonedens.com</a>
 </p>
 <br />
 
 <p align="center">
-<a href="https://www.jonedens.com/projects/star-wars-4ga/"><img src="https://www.jonedens.com/images/starwars-preview.png" /></a>
+<a href="https://www.jonedens.com" target="_blank"><img src="https://www.jonedens.com/images/starwars-preview.png" /></a>
 </p>
 
 <!-- ### Requirements:
