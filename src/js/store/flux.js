@@ -1,4 +1,4 @@
-import { element } from "prop-types";
+// import { element } from "prop-types";
 
 const getState = ({ getStore, getActions, setStore }) => {
   return {
